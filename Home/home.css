@@ -11,13 +11,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    
 }
-.nav-bar  a {
+.nav-bar a {
     color: #333;
-    padding: 14px 20px;
     text-decoration: none;
     text-align: center;
     font-size: 1em;
@@ -33,19 +30,17 @@ body {
 .nav-bar .menu {
     display: flex;
 }
-.nav-bar  .menu a {
-    margin: 0 10px;
-}
+
 .nav-bar  .menu a:hover {
     background-color: #ff6f00;
     color: #fff;
     border-radius: 4px;
 }
-
 .search {
     position: relative;
     width: 30vw;
 }
+
 .search input[type="search"] {
     width: 90%;
     padding: 10px 15px;
@@ -73,4 +68,51 @@ body {
 
 .search input[type="search"]:focus + .icon {
     color: #ff6f00;
+} 
+
+@media (min-width: 768px){
+    .nav-bar a{
+        padding: 14px 20px;
+    }
+    .nav-bar .menu a {
+        margin: 0 10px;
+    }
+    .nav-bar {
+        padding: 10px 20px;
+    }
+   
+}
+
+@media (max-width: 767px){
+    .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    .nav-bar .logo {
+        font-size: 1.2em;
+    }
+    .nav-bar .menu {
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav-bar .menu a {
+        padding: 10px;
+        width: 100%;
+        text-align: left;
+    }
+    .nav-bar > .menu > a{
+        padding-left: -20px;
+        margin-left: -10px;
+    }
+    .search {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .search input[type="search"] {
+        width: calc(100% - 40px);
+    }
+    .search .icon {
+        right: 10px;
+    }
 }
