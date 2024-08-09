@@ -1,0 +1,151 @@
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.contact-info, .edit-form {
+    margin-top: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.contact-info h3, .edit-form h3 {
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.label {
+    font-weight: bold;
+    width: 30%;
+}
+
+.value {
+    width: 70%;
+    text-align: left;
+    padding-left: 10px;
+}
+
+
+
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    background: white;
+    color: #999;
+    padding: 0 5px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-size: 16px;
+    
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+            top: 0;
+            left: 10px;
+            color: #ff6f00;
+            font-size: 12px;
+            transform: translateY(-50%);
+           
+}
+.edit-form{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.edit-form h3{
+    text-align: center;
+}
+.edit-form button[type="submit"], .edit-form button[type="button"] {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.edit-form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+.edit-form button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+    margin-left: 10px;
+}
+
+.edit-form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.edit-form button[type="button"]:hover {
+    background-color: #c82333;
+}
+
+.edit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+.edit-button:hover {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+}
+

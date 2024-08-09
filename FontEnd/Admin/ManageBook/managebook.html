@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Quản lý Sách</title>
+    <link rel="stylesheet" href="managebook.css">
+</head>
+<body>
+    <div class="all">
+        <div class="left sidebar">
+            <button class="toggle-button"><a href="../../Admin/ManageBook/ads.html">Quản lý sách</a></button>
+        </div>
+        <div class="right">
+            <div class="container">
+                <h1>Quản lý Sách</h1>
+                
+                <button class="toggle-button" onclick="openForm()">Thêm Sách</button>
+                
+                <div class="book-list">
+                    <h2>Danh sách Sách</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Hình ảnh</th>
+                                <th>Tiêu đề</th>
+                                <th>Tác giả</th>
+                                <th>Thể loại</th>
+                                <th>Năm xuất bản</th>
+                                <th>Giá</th>
+                                <th>Mô tả</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookList">
+                            <!-- Danh sách sách sẽ được thêm vào đây -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+            <div id="bookFormModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button" onclick="closeForm()">&times;</span>
+                    <h2>Thêm Sách Mới</h2>
+                    <form id="addBookForm">
+                        <div class="form-group">
+                            <label for="bookImage">Hình ảnh:</label>
+                            <input type="file" id="bookImage" name="bookImage" accept="image/*" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookTitle">Tiêu đề:</label>
+                            <input type="text" id="bookTitle" name="bookTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookAuthor">Tác giả:</label>
+                            <input type="text" id="bookAuthor" name="bookAuthor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookGenre">Thể loại:</label>
+                            <input type="text" id="bookGenre" name="bookGenre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookYear">Năm xuất bản:</label>
+                            <input type="number" id="bookYear" name="bookYear" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookPrice">Giá:</label>
+                            <input type="number" id="bookPrice" name="bookPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookDescription">Mô tả:</label>
+                            <textarea id="bookDescription" name="bookDescription" required></textarea>
+                        </div>
+                        <button type="submit">Thêm Sách</button>
+                        <button type="button" onclick="closeForm()">Hủy</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="editBookFormModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button" onclick="closeEditForm()">&times;</span>
+                    <h2>Sửa Thông Tin Sách</h2>
+                    <form id="editBookForm">
+                        <div class="form-group">
+                            <label for="editBookImage">Hình ảnh:</label>
+                            <input type="file" id="editBookImage" name="editBookImage" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="editBookTitle">Tiêu đề:</label>
+                            <input type="text" id="editBookTitle" name="editBookTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editBookAuthor">Tác giả:</label>
+                            <input type="text" id="editBookAuthor" name="editBookAuthor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editBookGenre">Thể loại:</label>
+                            <input type="text" id="editBookGenre" name="editBookGenre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editBookYear">Năm xuất bản:</label>
+                            <input type="number" id="editBookYear" name="editBookYear" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editBookPrice">Giá:</label>
+                            <input type="number" id="editBookPrice" name="editBookPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editBookDescription">Mô tả:</label>
+                            <textarea id="editBookDescription" name="editBookDescription" required></textarea>
+                        </div>
+                        <button type="submit">Lưu Thay Đổi</button>
+                        <button type="button" onclick="closeEditForm()">Hủy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="mangebook.js"></script>
+</body>
+</html>

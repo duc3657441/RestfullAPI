@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .bill-info {
+            margin-bottom: 20px;
+        }
+        .bill-info div {
+            margin-bottom: 10px;
+        }
+        .bill-items {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .bill-items th, .bill-items td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .bill-items th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Bill</h1>
+        </div>
+        <div class="bill-info">
+            <div><strong>User:</strong> {{ user_name }}</div>
+            <div><strong>Email:</strong> {{ user_email }}</div>
+            <div><strong>Date:</strong> {{ purchase_date }}</div>
+        </div>
+        <table class="bill-items">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.author }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.total_price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="total">
+            <strong>Total:</strong> {{ total_price }} VND
+        </div>
+    </div>
+</body>
+</html>

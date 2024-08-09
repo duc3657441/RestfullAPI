@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Purchase.css">
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Lịch Sử Mua Hàng</title>
+</head>
+<body>
+    <!-- Thanh nav -->
+    <div class="nav-bar">
+        <div class="logo"><a href="../Home/home.html"><img src="../static/logo.png" alt="Logo" ></a></div>
+        <div class="search">
+            <input type="search" id="search" placeholder="Search..." /> 
+            <span class="icon"><i class="fa fa-search"></i></span>
+        </div>
+        <div class="menu">
+            <a href="../PurchaseHistory/Purchase.html">Purchase</a>
+            <a href="../Profile/Profile.html" id="profile">Profile</a>
+            <a href="#best-sellers">Best Sellers</a>
+            <a href="#cart">Giỏ Hàng</a>
+            <a class="login-link" onclick="showLoginForm()" href="#">Log In</a>      
+                <!-- <img src="../static/user_icon.jpg" alt="User Icon" class="user-icon" id="user-icon"> -->
+            <a href="#contact">Liên Hệ</a>   
+        </div>
+    </div>
+   <div class="body">
+    <h1 style="text-align: center;">Lịch Sử Mua Hàng</h1>
+    <div class="order-container">
+        <div class="order-header">
+            <div class="store">Ngày mua hàng: 09/08/2024</div>
+            <div class="status">CHỜ THANH TOÁN</div>
+        </div>
+        <div class="order-item">
+            <img src="../static/book4.jpg" alt="Sản phẩm 1">
+            <div class="order-item-details">
+                <div>Bạn Không Chỉ Sống Một Lần</div>
+                <div>Thể loại: TRAVEL</div>
+                <div>x1</div>
+            </div>
+            <div class="price">35.000 VNĐ </div>
+        </div>
+        <div class="total-price">Thành tiền: 35.000 VNĐ</div>
+        <div class="order-actions">
+            <button class="received">THANH TOÁN</button>
+        </div>
+    </div>
+
+    <div class="order-container">
+        <div class="order-header">
+            <div class="store">Ngày mua hàng: 08/08/2024</div>
+            <div class="status">HOÀN THÀNH</div>
+        </div>
+        <div class="order-item">
+            <img src="../static/book3.jpg" alt="Sản phẩm 2">
+            <div class="order-item-details">
+                <div>Thánh Dực Dũng Nghĩa</div>
+                <div>Thể loại: CASUAL</div>
+                <div>x1</div>
+            </div>
+            <div class="price">55.000 VND</div>
+        </div>
+        <div class="order-item">
+            <img src="../static/book1.jpg" alt="Sản phẩm 3">
+            <div class="order-item-details">
+                <div>Một Mình Giữa Mùa Xuân Cô Đơn Nhất</div>
+                <div>Thể loại: CASUAL</div>
+                <div>x1</div>
+            </div>
+            <div class="price">128.000 VND</div>
+        </div>
+        <div class="total-price">Thành tiền: 183.000 VND</div>
+    </div>
+
+       
+          
+    </div>
+    <div class="newsletter">
+        <div style="margin:10px 5px 0 0;"> Đăng ký nhận thông tin 
+            <i class="fa-solid fa-envelope" style="margin-right: 10px; margin-left: 10px;"></i> 
+        </div>
+        <form>
+            <input type="email" placeholder="Nhập địa chỉ email của bạn">
+            <button type="submit">Đăng ký</button>
+        </form>
+    </div>
+    <div class="footer">
+        <div class="container" id="contact">
+            <div class="column">
+                <img src="../static/logobookstore.png" alt="Logo book store" class="logo-book-store">
+                <div class="min-text">624 Đ. Âu Cơ, Phường 10, Tân Bình, Hồ Chí Minh, Vietnam <br>
+                Công Ty Cổ Phần Phát Hành Sách TP HCM <br>
+                613 Đ. Âu Cơ, Phú Trung, Tân Phú, Hồ Chí Minh 70000, Vietnam <br>
+                Book Store nhận đặt hàng trực tuyến và giao hàng tận nơi. <br>
+                Hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng.</div>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-square-tumblr"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+                <div class="app-download">
+                    <img src="../static/google-play.png" alt="Google Play">
+                    <img src="../static/app-store.png" alt="App Store">
+                </div>
+            </div>
+            <div class="column">
+                <h3>DỊCH VỤ</h3>
+                <p><a href="#">Điều khoản sử dụng</a></p>
+                <p><a href="#">Chính sách bảo mật thông tin cá nhân</a></p>
+                <p><a href="#">Chính sách bảo mật thanh toán</a></p>
+                <p><a href="#">Giới thiệu Fahasa</a></p>
+                <p><a href="#">Hệ thống trung tâm - nhà sách</a></p>
+            </div>
+            <div class="column">
+                <h3>HỖ TRỢ</h3>
+                <p><a href="#">Chính sách đổi - trả - hoàn tiền</a></p>
+                <p><a href="#">Chính sách bảo hành - bồi hoàn</a></p>
+                <p><a href="#">Chính sách vận chuyển</a></p>
+                <p><a href="#">Chính sách khách sỉ</a></p>
+                <p><a href="#">Phương thức thanh toán và xuất HĐ</a></p>
+            </div>
+            <div class="column">
+                <h3>TÀI KHOẢN CỦA TÔI</h3>
+                <p><a href="#">Đăng nhập/Tạo mới tài khoản</a></p>
+                <p><a href="#">Thay đổi địa chỉ khách hàng</a></p>
+                <p><a href="#">Chi tiết tài khoản</a></p>
+                <p><a href="#">Lịch sử mua hàng</a></p>
+            </div>
+        </div>
+        <p>Liên hệ: 624 Đ. Âu Cơ, Phường 10, Tân Bình, TP.HCM | Email: cskh@bookstore.com.vn | Điện thoại: 0123456789</p>
+        
+        <div class="payment-icons ">
+            <img src="https://cdn0.fahasa.com/media/wysiwyg/Logo-NCC/vnpost1.png" alt="VNPost">
+            <img src="https://cdn0.fahasa.com/media/wysiwyg/Logo-NCC/ahamove_logo3.png" alt="AhaMove">
+            <img src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/vnpay_logo.png" alt="VNPay">
+            <img src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/ZaloPay-logo-130x83.png" alt="ZaloPay">
+            <img src="https://cdn0.fahasa.com/media/wysiwyg/Logo-NCC/Logo_ninjavan.png" alt="NinjaVan">
+            <img src="https://cdn0.fahasa.com/media/wysiwyg/Logo-NCC/icon_snappy1.png" alt="Snappy">
+            <img src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/momopay.png" alt="Momo">
+            <img src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/shopeepay_logo.png" alt="ShopeePay">
+        </div>
+    <script src="script.js"></script>
+    <script src="Purchase.js"></script>
+
+</body>
+</html>

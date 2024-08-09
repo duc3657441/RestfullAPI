@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../feedback/feedback.css">
+    <title>Book Details</title>
+</head>
+<body>
+    <div>
+    <!-- Thông tin sách -->
+    <div class="book-details">
+        <img src="../static/book1.jpg" alt="Book Image">
+        <h1>Book Title</h1>
+        <p>Book description goes here...</p>
+    </div>
+
+    <!-- Phần Feedback -->
+    <div class="feedback-section">
+        <h2>Gửi Feedback</h2>
+        <form id="feedback-form">
+            <input type="hidden" id="book-id" value="1"> <!-- ID sách, thay đổi theo sách cụ thể -->
+            <textarea id="feedback-text" placeholder="Nhập feedback của bạn..." required></textarea>
+            <button type="submit"><a href="../Home/home.html">Gửi Feedback</a></button>
+        </form>
+        
+        <div id="feedback-list">
+            <!-- Feedback sẽ được thêm vào đây -->
+        </div>
+    </div>
+</div>
+
+    <script src="../feedback/feedback.css"></script>
+</body>
+</html>

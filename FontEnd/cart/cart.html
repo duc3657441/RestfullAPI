@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Shopping Cart</title>
+    <style>
+        /* Thêm CSS tùy chỉnh cho giỏ hàng */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            background-color: azure;
+            padding: 10px 40px 10px 40px;
+            border-radius: 40px;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .cart-item .item-details {
+            flex: 1;
+        }
+
+        .cart-item .item-total {
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .checkout-btn:active {
+            background-color: #50ff76;
+        }
+    </style>
+</head>
+<body>
+    <!-- Thanh nav -->
+    <div class="nav-bar">
+        <div class="logo"><a href="../Home/home.html"><img src="../static/logo.png" alt="Logo" ></a></div>
+        <div class="search">
+            <input type="search" id="search" placeholder="Search..." /> 
+            <span class="icon"><i class="fa fa-search"></i></span>
+        </div>
+        <div class="menu">
+            <a href="../PurchaseHistory/Purchase.html">Purchase</a>
+            <a href="../Profile/Profile.html">Profile</a>
+            <a href="#best-sellers">Best Sellers</a>
+            <a href="../cart/cart.html">Giỏ Hàng</a>
+            <a class="login-link" onclick="showLoginForm()" href="#">Log In</a>
+            <a href="#contact">Liên Hệ</a>   
+        </div>
+    </div>
+    <!-- Form login -->
+    <div class="login-form-wrapper" id="loginFormWrapper" onclick="hideLoginForm(event)">
+        <div class="login-form" onclick="event.stopPropagation()">
+            <h2>Đăng nhập</h2>
+            <div class="form-group">
+                <input type="email" id="username" name="email" placeholder="" required>
+                <label for="username">Tên đăng nhập</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="" required>
+                <label for="password">Mật khẩu</label>
+            </div>
+            <div id="error-message" class="error-message"></div>
+            <div id="notification" class="notification"></div>
+            <div class="form-group">
+                <button onclick="login()">Đăng nhập</button>
+            </div>
+             <div class="forgot-password">
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+            <div class="or-divider">hoặc</div>
+            <a href="#" class="create-account-button">Tạo tài khoản mới</a>
+        </div>
+    </div>
+    <!-- end login -->
+
+    <div class="cart-container">
+        <h1>Giỏ Hàng</h1>
+        <div id="cart-items">
+            <!-- Các mặt hàng giỏ hàng sẽ được thêm vào đây -->
+            <div class="cart-item">
+
+                <img src="../static/book1.jpg" alt="Product 1">
+                <div class="item-details">
+                    <h4>Một Mình Giữa Mùa Xuân Cô Đơn Nhất</h4>
+                    <p>128.000 VND x 1</p>
+                </div>
+                <div class="item-total">128.000 VND</div>
+            </div>
+            <div class="cart-item">
+
+                <img src="../static/book2.jpg" alt="Product 2">
+                <div class="item-details">
+                    <h4>5 Nguyên Tắc Thép</h4>
+                    <p>55.000 VND x 2</p>
+                </div>
+                <div class="item-total">110.000 VNĐ</div>
+            </div>
+            <div class="cart-item">
+
+                <img src="../static/book3.jpg" alt="Product 3">
+                <div class="item-details">
+                    <h4>Thánh Dực Dũng Nghĩa</h4>
+                    <p>55.000 VND x 1</p>
+                </div>
+                <div class="item-total">55.000 VND</div>
+            </div>
+            <div class="cart-item">
+
+                <img src="../static/book4.jpg" alt="Product 4">
+                <div class="item-details">
+                    <h4>Bạn Không Chỉ Sống Một Lần</h4>
+                    <p>35.000 VND x 1</p>
+                </div>
+                <div class="item-total">35.000 VND</div>
+            </div>
+        </div>
+        <div class="total-price">
+            <strong>Total Price: </strong>
+            <span id="total-price">328.000 VNĐ</span>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">Thanh toán</button>
+    </div>
+    <!-- end giỏ hàng -->
+     <!-- Hộp thoại xác nhận phương thức thanh toán -->
+<div id="payment-dialog" class="payment-dialog" style="display: none;">
+    <div class="payment-dialog-content">
+        <h3>Chọn phương thức thanh toán</h3>
+        <button onclick="handlePayment('cash')">Tiền mặt</button>
+        <button onclick="handlePayment('card')">Thẻ/ Ví trả sau</button>
+        <button onclick="closePaymentDialog()">Hủy</button>
+    </div>
+</div>
+
+
+    <script src="../cart/cart.js"></script>
+</body>
+</html>

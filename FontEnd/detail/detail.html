@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Book Store</title>
+</head>
+<body>
+    <!-- Thanh nav -->
+    <div class="nav-bar">
+        <div class="logo"><a href="home.html"><img src="../static/logo.png" alt="Logo" ></a></div>
+        <div class="search">
+            <input type="search" id="search" placeholder="Search..." /> 
+            <span class="icon"><i class="fa fa-search"></i></span>
+        </div>
+        <div class="menu">
+            <a href="#categories">Categories</a>
+            <a href="#best-sellers">Best Sellers</a>
+            <a href="../cart/cart.html">Cart</a>
+            <a href="../feedback/feedback.html">Feedback</a>
+            <a href="#contact">Contact</a>   
+        </div>
+    </div>
+    <!-- Form login -->
+    <div class="login-form-wrapper" id="loginFormWrapper" onclick="hideLoginForm(event)">
+        <div class="login-form" onclick="event.stopPropagation()">
+            <h2>Đăng nhập</h2>
+            <div class="form-group">
+                <input type="email" id="username" name="username" placeholder="" required>
+                <label for="username">Tên đăng nhập</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="" required>
+                <label for="password">Mật khẩu</label>
+            </div>
+            <div class="form-group">
+                <button type="submit">Đăng nhập</button>
+            </div>
+            <div class="forgot-password">
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+            <div class="or-divider">hoặc</div>
+            <a href="#" class="create-account-button">Tạo tài khoản mới</a>
+        </div>
+    </div>
+
+    <script>
+        function showLoginForm() {
+            document.getElementById('loginFormWrapper').style.display = 'flex';
+        }
+        function hideLoginForm(event) {
+            if (event.target.id === 'loginFormWrapper') {
+                document.getElementById('loginFormWrapper').style.display = 'none';
+            }
+        }
+    </script>
+    <!-- end login -->
+    <div class="body">
+
+        <a href="../Home/home.html"><button class="Comeback"> Quay lại </button></a>
+        <!-- End marketable product -->
+        <!-- product -->
+
+
+        <div class="product-container-1">
+            <div class="product-card-1">
+                <div class="sale-badge-1">SALE</div>
+                <img src="../static/book1.jpg" alt="Product 1">
+                
+            </div>
+            <div class="product-card-1" style="margin-left: 20px;">
+                <div class="product-details-1">
+                    <b style="font-size: 20px;">Một Mình Giữa Mùa Xuân Cô Đơn Nhất</b>
+                </div>
+                    <hr>
+                    <div class="content" >
+                        <b style="font-size: 25px;">Nội dung:</b>
+                        <p style="overflow: auto; height: 232px;font-size: 20px;">
+                            Mỗi chúng ta trong cuộc đời đều đã từng gặp, từng thích, từng yêu hoặc là cũng đã từng chia tay. Mỗi giai đoạn của tình yêu, chúng ta sẽ có những cảm giác khác nhau, có lúc sẽ buồn, có lúc sẽ vui, có lúc sẽ hạnh phúc đến cùng cực hoặc cũng có lúc sẽ đau thương đến tan nát cõi lòng.
+                            Có người yêu bằng lí trí, cũng có người yêu bằng trái tim. Có người đủ bản lĩnh cầm lên, đủ bản lĩnh đặt xuống. Nhưng cũng có người có thể yêu nhưng lại chẳng đủ can đảm để rời xa hay mỗi lần rời xa lại là một lần đau khổ.
+                            “Mặt trời màu đỏ, mây thì màu xanh, còn em nhớ anh” chính là những câu chuyện tình yêu hằng ngày, là những gì đồng cảm nhất, là những suy nghĩ xác thực nhất của một người đã yêu, đang yêu và mong muốn được yêu.
+                            Đó còn là những câu chuyện buồn, là những mẩu chuyện vui, là những dòng tâm sự từng trải, là những điều muốn nhắn nhủ với người mình yêu, là những lời tự động viên bản thân của chính mình. Là những khoảnh khắc, những cung bậc của tình yêu mà bất kì ai yêu rồi cũng đều sẽ trải qua.
+                            Tình yêu không phải là điều tốt đẹp nhất, nhưng chúng ta yêu là để nhận được những điều tốt đẹp nhất. Hi vọng tất cả chúng ta sau này đều có thể tìm được một người khiến tình yêu của chúng ta trở nên đáng giá. Hi vọng chúng ta không còn sợ tình yêu, không còn đau buồn nhiều. Tìm được một người xứng đáng để cùng nắm tay, cùng già đi.
+                        </p>
+                    </div>
+                    <hr>
+                    <div style="font-size: 20px; margin-bottom: 20px; margin-top: 20px;" >
+                    <div class="price-1"><b>128.000 VND</b></div>
+                    <div class="rating-1">★★★☆☆</div>
+                    <div class="category-1">CASUAL</div>
+                    </div>
+                    
+                    <button class="add-to-cart-1">Add to cart</button>
+                </div>
+            </div>
+            <!-- Add more product-cards as needed -->
+        </div>
+        
+        <!-- end product -->
+                 <!-- Marketable product -->
+                  
+        <div class="containerMarkettableProduct" id="best-sellers">
+            <div class="label">Marketable product</div>
+            <div class="line"></div>
+            <a href="#" class="view-all">See all »</a>
+        </div>
+
+        <div >
+            <h3 id="dv" class="text-center mb-4" style="color: #c83900; text-align: center;margin-bottom: 40px; font-size: 30px; ">Đề xuất</h3>
+            <section id="services" class="container mt-4">
+              <div class="row">
+                <div class="col-md-4" style="display: flex; margin-left: auto;">
+                    <div class="product-card">
+                        <div class="sale-badge">SALE</div>
+                        <img src="../static/book2.jpg" alt="Product 2">
+                        <div class="product-details">
+                            <h4>Fringilla Phasellus Faucus Scelerisque Eleifend Donec</h4>
+                            <div class="price">$55.00 <del>$60.00</del></div>
+                            <div class="rating">★★★★☆</div>
+                            <div class="add"> 
+                                <div class="category">CASUAL</div>
+                                <button class="add-to-cart">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="sale-badge">SALE</div>
+                        <img src="../static/book1.jpg" alt="Product 1">
+                        <div class="product-details">
+                            <h4>Aturna condimentum mattis pellentesque nibh tortor</h4>
+                            <div class="price">$70.00 <del>$80.00</del></div>
+                            <div class="rating">★★★☆☆</div>
+                            <div class="add"> 
+                                <div class="category">CASUAL</div>
+                                <button class="add-to-cart">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="sale-badge">SALE</div>
+                        <img src="../static/book2.jpg" alt="Product 2">
+                        <div class="product-details">
+                            <h4>Fringilla Phasellus Faucus Scelerisque Eleifend Donec</h4>
+                            <div class="price">$55.00 <del>$60.00</del></div>
+                            <div class="rating">★★★★☆</div>
+                            <div class="add"> 
+                                <div class="category">CASUAL</div>
+                                <button class="add-to-cart">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="sale-badge">SALE</div>
+                        <img src="../static/book3.jpg" alt="Product 3">
+                        <div class="product-details">
+                            <h4>Mollis nunc sed id semper risus in hendrerit</h4>
+                            <div class="price">$45.00 <del>$60.00</del></div>
+                            <div class="rating">★★★★☆</div>
+                            <div class="add"> 
+                                <div class="category">CASUAL</div>
+                                <button class="add-to-cart">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="sale-badge">SALE</div>
+                        <img src="../static/book4.jpg" alt="Product 4">
+                        <div class="product-details">
+                            <h4>Scelerisque mauris pellentesque pulvinar</h4>
+                            <div class="price">$35.00 <del>$55.00</del></div>
+                            <div class="rating">★★★☆☆</div>
+                            <div class="add"> 
+                                <div class="category">TRAVEL</div>
+                                <button class="add-to-cart">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </section>
+        </div>
+
+        <!--end-->
+        <div class="newsletter">
+            <div style="margin:10px 5px 0 0;"> Đăng ký nhận thông tin 
+                <i class="fa-solid fa-envelope" style="margin-right: 10px; margin-left: 10px;"></i> 
+            </div>
+            <form>
+                <input type="email" placeholder="Nhập địa chỉ email của bạn">
+                <button type="submit">Đăng ký</button>
+            </form>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <div class="column">
+                    <img src="../static/logobookstore.png" alt="Logo book store" class="logo-book-store" width="270px">
+                    <div class="min-text">624 Đ. Âu Cơ, Phường 10, Tân Bình, Hồ Chí Minh, Vietnam <br>
+                        Công Ty Cổ Phần Phát Hành Sách TP HCM <br>
+                        613 Đ. Âu Cơ, Phú Trung, Tân Phú, Hồ Chí Minh 70000, Vietnam <br>
+                        Book Store nhận đặt hàng trực tuyến và giao hàng tận nơi. <br>
+                        Hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng.
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-square-tumblr"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                    <div class="app-download">
+                        <img src="../static/google-play.png" alt="Google Play">
+                        <img src="../static/app-store.png" alt="App Store">
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>DỊCH VỤ</h3>
+                    <p><a href="#">Điều khoản sử dụng</a></p>
+                    <p><a href="#">Chính sách bảo mật thông tin cá nhân</a></p>
+                    <p><a href="#">Chính sách bảo mật thanh toán</a></p>
+                    <p><a href="#">Giới thiệu Fahasa</a></p>
+                    <p><a href="#">Hệ thống trung tâm - nhà sách</a></p>
+                </div>
+                <div class="column">
+                    <h3>HỖ TRỢ</h3>
+                    <p><a href="#">Chính sách đổi - trả - hoàn tiền</a></p>
+                    <p><a href="#">Chính sách khách sỉ</a></p>
+                    <p><a href="#">Phương thức vận chuyển</a></p>
+                    <p><a href="#">Phương thức thanh toán và xuất HĐ</a></p>
+                    <p><a href="#">Chính sách hàng nhập khẩu</a></p>
+                    <p><a href="#">Câu hỏi thường gặp</a></p>
+                </div>
+                <div class="column">
+                    <h3>TÀI KHOẢN CỦA TÔI</h3>
+                    <p><a href="#">Đăng nhập/Tạo mới tài khoản</a></p>
+                    <p><a href="#">Thay đổi địa chỉ khách hàng</a></p>
+                    <p><a href="#">Chi tiết tài khoản</a></p>
+                    <p><a href="#">Lịch sử mua hàng</a></p>
+                </div>
+            </div>
+            <div class="payment-icons">
+                <img src="../static/visa.png" alt="Visa">
+                <img src="../static/mastercard.png" alt="MasterCard">
+                <img src="../static/jcb.png" alt="JCB">
+                <img src="../static/cash.png" alt="Cash">
+            </div>
+        </div>
+    </div>
+    <script src="../script.js"></script>
+</body>
+</html>

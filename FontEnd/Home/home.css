@@ -1,0 +1,16 @@
+
+
+.image-container img {
+    width: 300px; /* Đặt kích thước chiều rộng cố định cho hình ảnh */
+    height: 200px; /* Đặt kích thước chiều cao cố định cho hình ảnh */
+    object-fit: cover; /* Đảm bảo hình ảnh được bao phủ toàn bộ khung mà không bị biến dạng */
+}
+
+.error-message {
+    color: #e53935;
+    margin-top: 10px;
+}
+.notification {
+    color: green;
+    margin-top: 10px;
+}
