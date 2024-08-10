@@ -1,9 +1,13 @@
 document.getElementById('addBookForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    
     // Lấy giá trị từ form
     const imageFile = document.getElementById('bookImage').files[0];
     const reader = new FileReader();
+    const check = addBookToAPI();
+    if (check == -1) {
+        alert("loi api");
+        return;
+    }
     reader.onload = function(event) {
         const image = event.target.result;
         const title = document.getElementById('bookTitle').value;
@@ -24,6 +28,81 @@ document.getElementById('addBookForm').addEventListener('submit', function(event
     }
     reader.readAsDataURL(imageFile);
 });
+async function addBookToAPI() {
+    const imageFile = document.getElementById('bookImage').files[0];
+    const image_url = document.getElementById('bookImage').value;
+    const title = document.getElementById('bookTitle').value;
+    const author = document.getElementById('bookAuthor').value;
+    const category = document.getElementById('bookGenre').value;
+    const year = document.getElementById('bookYear').value;
+    const price = document.getElementById('bookPrice').value;
+    const description = document.getElementById('bookDescription').value;
+    let formData = new FormData();
+    formData.append('title', title);
+    formData.append('author', author);
+    formData.append('category', category);
+    formData.append('year', year);
+    formData.append('price', price);
+    formData.append('stock', '100');
+    formData.append('image', imageFile); // Thêm tệp ảnh vào FormData
+
+    
+    try {
+        const response = await fetch('http://127.0.0.1:5000/admin/books', {
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': 'http://127.0.0.1:5000',
+                'Access-Control-Allow-Credentials': 'true'
+            },
+            body: formData
+            
+        });
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Thêm sách thành công ');   
+        } else {
+            //  errorMessageElement.innerText = data.error;
+            alert(data.message)
+            return -1;
+        }
+    } catch (error) {
+        alert( error);
+        return -1;
+    }
+    // try {
+    //     const response = await fetch('http://127.0.0.1:5000/admin/books', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Access-Control-Allow-Origin': 'http://127.0.0.1:5000',
+    //             'Access-Control-Allow-Credentials': 'true'
+    //         },
+    //         body: JSON.stringify({
+    //              'title': title,
+    //              'author': author,
+    //              'category': category,
+    //              'year': year,
+    //              'price': price,
+    //              'stock': '100',
+    //              'image_url': image_url
+    //             })
+            
+    //     });
+    //     const data = await response.json();
+
+    //     if (response.ok) {
+    //         alert('Thêm sách thành công ');      
+    //     } else {
+    //         //  errorMessageElement.innerText = data.error;
+    //         alert(data.message)
+    //         return -1;
+    //     }
+    // } catch (error) {
+    //     alert(error);
+    //     return -1;
+    // }
+}
 
 function addBookToList(image, title, author, genre, year, price, description) {
     const bookList = document.getElementById('bookList');
