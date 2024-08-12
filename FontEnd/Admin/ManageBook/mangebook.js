@@ -1,36 +1,14 @@
-document.getElementById('addBookForm').addEventListener('submit', function(event) {
+document.getElementById('addBookForm').addEventListener('submit',  function(event) {
     event.preventDefault();
-    // Lấy giá trị từ form
-    const imageFile = document.getElementById('bookImage').files[0];
-    const reader = new FileReader();
-    const check = addBookToAPI();
+    const check =  addBookToAPI();
     if (check == -1) {
-        alert("loi api");
         return;
     }
-    reader.onload = function(event) {
-        const image = event.target.result;
-        const title = document.getElementById('bookTitle').value;
-        const author = document.getElementById('bookAuthor').value;
-        const genre = document.getElementById('bookGenre').value;
-        const year = document.getElementById('bookYear').value;
-        const price = document.getElementById('bookPrice').value;
-        const description = document.getElementById('bookDescription').value;
-
-        // Thêm sách vào danh sách
-        addBookToList(image, title, author, genre, year, price, description);
-
-        // Xóa form
-        document.getElementById('addBookForm').reset();
-        
-        // Ẩn form sau khi thêm sách
-        closeForm();
-    }
-    reader.readAsDataURL(imageFile);
 });
+
+window.onload = loadBookToList();
 async function addBookToAPI() {
     const imageFile = document.getElementById('bookImage').files[0];
-    const image_url = document.getElementById('bookImage').value;
     const title = document.getElementById('bookTitle').value;
     const author = document.getElementById('bookAuthor').value;
     const category = document.getElementById('bookGenre').value;
@@ -43,10 +21,8 @@ async function addBookToAPI() {
     formData.append('category', category);
     formData.append('year', year);
     formData.append('price', price);
-    formData.append('stock', '100');
+    formData.append('stock', description);
     formData.append('image', imageFile); // Thêm tệp ảnh vào FormData
-
-    
     try {
         const response = await fetch('http://127.0.0.1:5000/admin/books', {
             method: 'POST',
@@ -59,49 +35,63 @@ async function addBookToAPI() {
         });
         const data = await response.json();
 
-        if (response.ok) {
-            alert('Thêm sách thành công ');   
-        } else {
+        if (!response.ok) {
             //  errorMessageElement.innerText = data.error;
             alert(data.message)
             return -1;
+        }
+        else{
+            alert('them sach thanh cong');
         }
     } catch (error) {
         alert( error);
         return -1;
     }
-    // try {
-    //     const response = await fetch('http://127.0.0.1:5000/admin/books', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Access-Control-Allow-Origin': 'http://127.0.0.1:5000',
-    //             'Access-Control-Allow-Credentials': 'true'
-    //         },
-    //         body: JSON.stringify({
-    //              'title': title,
-    //              'author': author,
-    //              'category': category,
-    //              'year': year,
-    //              'price': price,
-    //              'stock': '100',
-    //              'image_url': image_url
-    //             })
-            
-    //     });
-    //     const data = await response.json();
+    
+}
 
-    //     if (response.ok) {
-    //         alert('Thêm sách thành công ');      
-    //     } else {
-    //         //  errorMessageElement.innerText = data.error;
-    //         alert(data.message)
-    //         return -1;
-    //     }
-    // } catch (error) {
-    //     alert(error);
-    //     return -1;
-    // }
+async function loadBookToList(){
+    try {
+        const response = await fetch('http://127.0.0.1:5000/books/', {
+            method: 'GET',
+            headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Credentials': 'true'
+                    },
+                    });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const products = await response.json();
+        products.forEach(product => {
+            addBookToList(product.image_url, product.title, product.author, product.category, product.year, product.price, product.stock);
+        });
+        
+        
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
+}
+
+async function deteleBookToList(){
+    try {
+        const response = await fetch('http://127.0.0.1:5000/books/', {
+            method: 'GET',
+            headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Credentials': 'true'
+                    },
+                    });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const products = await response.json();
+        
+        
+        
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
 }
 
 function addBookToList(image, title, author, genre, year, price, description) {
@@ -109,7 +99,7 @@ function addBookToList(image, title, author, genre, year, price, description) {
     const row = document.createElement('tr');
 
     row.innerHTML = `
-        <td><img src="${image}" alt="${title}" style="width: 100px; height: auto;"></td>
+        <td><img src="../../database/${image}" alt="${title}" style="width: 100px; height: auto;"></td>
         <td>${title}</td>
         <td>${author}</td>
         <td>${genre}</td>
@@ -201,3 +191,35 @@ window.onclick = function(event) {
         editModal.style.display = "none";
     }
 }
+// try {
+    //     const response = await fetch('http://127.0.0.1:5000/admin/books', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Access-Control-Allow-Origin': 'http://127.0.0.1:5000',
+    //             'Access-Control-Allow-Credentials': 'true'
+    //         },
+    //         body: JSON.stringify({
+    //              'title': title,
+    //              'author': author,
+    //              'category': category,
+    //              'year': year,
+    //              'price': price,
+    //              'stock': '100',
+    //              'image_url': image_url
+    //             })
+            
+    //     });
+    //     const data = await response.json();
+
+    //     if (response.ok) {
+    //         alert('Thêm sách thành công ');      
+    //     } else {
+    //         //  errorMessageElement.innerText = data.error;
+    //         alert(data.message)
+    //         return -1;
+    //     }
+    // } catch (error) {
+    //     alert(error);
+    //     return -1;
+    // }

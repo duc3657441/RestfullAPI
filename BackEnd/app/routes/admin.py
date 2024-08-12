@@ -3,7 +3,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from ..models import db, User, Feedback, Book
 import os
 from werkzeug.utils import secure_filename
-from config import config
+from config import Config
 import random
 import string
 import datetime
@@ -36,7 +36,28 @@ def random_name():
     
     return file_name
 
+# Sua sach
+@admin_bp.route('/<int:id>', methods=['PUT'])
+@jwt_required()
+def update_book(id):
+    current_user = get_jwt_identity()
+    if not current_user['is_admin']:
+        return jsonify({'message': 'Access forbidden'}), 403
 
+    book = Book.query.get_or_404(id)
+    data = request.get_json()
+
+    if 'price' in data and isinstance(data['price'], str):
+        try:
+            data['price'] = float(data['price'].replace(".", "").replace(",", ""))
+        except ValueError:
+            return jsonify({'message': 'Invalid price format'}), 400
+
+    for key, value in data.items():
+        setattr(book, key, value)
+
+    db.session.commit()
+    return jsonify(book.to_dict()), 200
 
 @admin_bp.route('/feedback', methods=['GET'])
 @jwt_required()
@@ -52,11 +73,11 @@ def get_feedback():
 @admin_bp.route('/books', methods = ['POST'])
 #@jwt_required()
 def add_book():
-    #current_user = get_jwt_identity()
+    # current_user = get_jwt_identity()
     # if not current_user['is_admin']:
     #     return jsonify({'message': 'Access forbidden'}), 403
-    title = request.form.get('title')
     
+    title = request.form.get('title')
     author = request.form.get('author')
     category = request.form.get('category')
     year = request.form.get('year')
@@ -82,7 +103,7 @@ def add_book():
         return jsonify({'message': 'This file is not an image '}), 400
     ext = image_file.filename.rsplit(".",1)[1]
     randomName = random_name() + "." + ext
-    image_file.save(os.path.join("D:\\RestfullAPI\\FontEnd\\database",randomName))
+    image_file.save(os.path.join(Config.RESTFULLAPI_DIRECTORY,'FontEnd','database',randomName))
     
     # Tạo đối tượng sách mới
     new_book = Book(
@@ -91,34 +112,26 @@ def add_book():
         category=category,
         year=int(year),
         price=float(price.replace(".", "").replace(",", "")),
-        stock=int(stock),
+        stock=stock,
         image_url= randomName
     )
     db.session.add(new_book)
     db.session.commit()
     return jsonify(new_book.to_dict()), 201
-    data = request.get_json()
-    
-    required_fields = ['title', 'author', 'category', 'year', 'price', 'stock', 'image_url']
 
-    for field in required_fields:
-        if field not in data:
-            return jsonify({'message': f'Missing required field: {field}'}), 400
-    
-    existing_book = Book.query.filter_by(title=data['title'], author=data['author']).first()
-    if existing_book:
-        return jsonify({'message': 'Book already exists'}), 409
+# Xoa sach
+@admin_bp.route('/<int:id>', methods=['DELETE'])
+@jwt_required()
+def delete_book(id):
+    # current_user = get_jwt_identity()
+    # if not current_user['is_admin']:
+    #     return jsonify({'message': 'Access forbidden'}), 403
 
-    new_book = Book(
-        title=data['title'],
-        author=data['author'],
-        category=data['category'],
-        year=int(data['year']),
-        price=float(data['price'].replace(".", "").replace(",", "")),
-        stock=int(data['stock']),
-        image_url=data['image_url']
-    )
+    book = Book.query.get_or_404(id)
 
-    db.session.add(new_book)
+    # Xóa các mục trong giỏ hàng liên kết với quyển sách này
+    # Cart.query.filter_by(book_id=book.id).delete()
+
+    db.session.delete(book)
     db.session.commit()
-    return jsonify(new_book.to_dict()), 201
+    return jsonify({'message': 'Book deleted'}), 200

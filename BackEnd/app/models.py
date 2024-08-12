@@ -39,7 +39,9 @@ class Book(db.Model):
     category = db.Column(db.String(255))
     year = db.Column(db.Integer)
     price = db.Column(db.Float, nullable=False)
-    stock = db.Column(db.Integer, default=0)
+    #stock = db.Column(db.Integer, default=0)
+    stock = db.Column(db.String(255), default='')
+
     image_url = db.Column(db.String(255))
     carts = db.relationship('Cart', backref='book', lazy=True)
 

@@ -32,7 +32,7 @@ function layNgauNhienSP(arr) {
         productCard.appendChild(saleBadge);
 
         const productImage = document.createElement('img');
-        productImage.src = product.image_url;
+        productImage.src = '../database/' + product.image_url;
         
         productImage.alt = product.title;
         productCard.appendChild(productImage);
@@ -42,7 +42,7 @@ function layNgauNhienSP(arr) {
 
         const productName = document.createElement('h4');
         productName.textContent = product.title;
-        productDetails.appendChild(productName);
+        productDetails.appendChild(productName); 
 
         const productPrice = document.createElement('div');
         productPrice.className = 'price';

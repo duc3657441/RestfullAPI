@@ -7,6 +7,8 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'your_jwt_secret_key_here')  # Đảm bảo khóa bí mật này đúng
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=1)
+    CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__name__))
+    RESTFULLAPI_DIRECTORY = os.path.dirname(CURRENT_DIRECTORY)
 class DevelopmentConfig(Config):
     DEBUG = True
 
